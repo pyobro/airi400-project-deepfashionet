@@ -32,3 +32,28 @@ class ImageReader(object):
         return image
 
 
+# filename과 class를 저장
+def get_filenames_and_classes(dataset_dir):
+    clothes_root = os.path.join(dataset_dir, "img")
+    directories = []
+    class_names = []
+    for filename in os.listdir(clothes_root):
+        path = os.path.join(clothes_root, filename)
+        if os.path.isdir(path):
+            directories.append(path)
+            class_names.append(filename)
+
+    photo_filenames = []
+    for directory in directories:
+        for filename in os.listdir(directory):
+            path = os.path.join(directory, filename)
+            photo_filenames.append(path)
+
+    return photo_filenames, sorted(class_names)
+
+
+
+
+
+
+
